@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book List</title>
+</head>
+{% block content %}
+<body>
+<div class="row">
+    {% for each in object_list %}
+    <div class="col">
+        <div class="card" style="width:13rem; ">
+            <img src="{{each.image_url}}" class="card-img-top" alt="..">
+            <div class="card-body">
+                <h5 class="card-title">{{each.title}}</h5>
+                <p class="card-text">Rs/-: {{each.price|floatformat:2}}</p>
+                {% if each.book_available is True %}
+                <li class="text-primary">Available</li>
+                {% else %}
+                <li class="text-danger">Out of stock!</li>
+                {% endif %}
+                  </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+</body>
+{% endblock content %}
+</html>
