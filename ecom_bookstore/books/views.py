@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import Book, Order
 from django.views.generic import ListView,DetailView
 from django .http import JsonResponse
+from django.db.models import Q
 
 # Create your tests here.
 
@@ -22,3 +23,11 @@ def PaymentComplete(request):
     product=Book.objects.get(id=body['productId'])
     Order.objects.create(product=product)
     return JsonResponse('Payment completed',safe=False)
+
+class SearchResultsView(ListView):
+    model= Book
+    template_name = 'search.html'
+
+    def get_queryset(self):
+        query=self.request.GET.get('q')
+        return Book.objects.filter(Q(title=query) | Q(author=query))
