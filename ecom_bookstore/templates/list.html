@@ -20,7 +20,13 @@
                 {% else %}
                 <li class="text-danger">Out of Stock !</li>
                 {% endif %}<br>
-                <a href="{% url 'detail-view' each.id %}" class="btn btn-primary">View</a>
+                <button class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <a class="btn btn-outline-success" href="{% url 'detail-view' each.id %}">View</a>
+<!--                <a href="{% url 'detail-view' each.id %}" class="btn btn-primary">View</a>-->
+<!--                     <a href="#" type="submit" class=" btn btn-primary">Add to Cart </a>-->
+<!--                <form action="/" method="POST">-->
+<!--                    <a href="#" type="submit" class="float-right btn btn-light border btn-sm">Add to Cart </a>-->
+<!--                </form>-->
             </div>
         </div>
     </div>

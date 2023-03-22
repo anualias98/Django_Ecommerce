@@ -1,11 +1,17 @@
-from django import urls
-from django.urls import path
-from .views import SignUpView
+from accounts .views import home
 
-urlpatterns=[
-    path('signup/',SignUpView.as_view(),name='sign-up')
+from django.urls import path
+from . import views
+from .views import Index
+
+app_name = "accounts"
+
+
+urlpatterns = [
+        path("register/", views.register_request, name="register"),
+        path("login/", views.login_request, name="login"),
+        path('',Index.as_view(),name='index'),
+        path('home/',home,name="home"),
 
 ]
-
-
 

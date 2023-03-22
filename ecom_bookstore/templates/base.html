@@ -30,8 +30,8 @@
         {% if user.is_authenticated %}
         <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
         {% else %}
-        <a class="dropdown-item text-secondary" href="{% url 'login' %}">Log In</a>
-        <a class="dropdown-item text-secondary" href="{% url 'sign-up' %}">Sign Up</a>
+        <a class="dropdown-item text-secondary" href="{% url 'accounts:login' %}">Log In</a>
+        <a class="dropdown-item text-secondary" href="{% url 'accounts:register' %}">Sign Up</a>
         {% endif %}
         </div>
     </div>
