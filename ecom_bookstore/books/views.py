@@ -3,6 +3,8 @@ import json
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.views import View
+
 from .models import Book, Order
 from django.views.generic import ListView,DetailView
 from django .http import JsonResponse
@@ -10,7 +12,9 @@ from django.db.models import Q
 
 # Create your tests here.
 
-
+class About(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'accounts/About.html')
 class BookListView(ListView):
     model = Book
     template_name = 'list.html'
