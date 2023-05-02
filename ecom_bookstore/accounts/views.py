@@ -3,8 +3,10 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.views import View
-# Create your views here.
+from django.contrib.auth import logout
 from .forms import NewUserForm
+# Create your views here.
+
 
 
 def register_request(request):
@@ -47,3 +49,7 @@ def home(request):
     template="accounts/home.html"
     context={}
     return render(request,template,context)
+
+def signout(request):
+    logout(request)
+    return redirect('login')

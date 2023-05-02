@@ -9,9 +9,9 @@
 
 <div class="row">
     {% for each in object_list %}
-    <div class="col">
-        <div class="card" style="width: 13rem;">
-            <img src="{{ each.image_url }}" class="card-img-top" alt="...">
+    <div class="col-lg-3 d-flex align-items-stretch mt-5" >
+        <div class="card" style="width: 500px; height:530px;">
+            <img src="{{each.image_url}}" class="card-img-top" alt=".." width="300" height="300">
             <div class="card-body">
                 <h5 class="card-title">{{ each.title|slice:":25"}} ...</h5>
                 <p class="card-text">Rs/-: {{ each.price|floatformat:2 }}</p>
@@ -20,9 +20,9 @@
                 {% else %}
                 <li class="text-danger">Out of Stock !</li>
                 {% endif %}<br>
-                <button class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <a class="btn btn-outline-secondary add-btn update-cart" href="{% url 'add_to_cart' each.id %}">Add to Cart</a>
                 <a class="btn btn-outline-success" href="{% url 'detail-view' each.id %}">View</a>
-<!--                <a href="{% url 'detail-view' each.id %}" class="btn btn-primary">View</a>-->
+<!--                <a href="{% url 'detail-view' each.id %}" class="btn btn-primary">V{% url 'add_to_cart' each.id %}iew</a>-->
 <!--                     <a href="#" type="submit" class=" btn btn-primary">Add to Cart </a>-->
 <!--                <form action="/" method="POST">-->
 <!--                    <a href="#" type="submit" class="float-right btn btn-light border btn-sm">Add to Cart </a>-->
@@ -32,5 +32,6 @@
     </div>
     {% endfor %}
 </div>
+
 
 {% endblock content %}
